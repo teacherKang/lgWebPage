@@ -1,15 +1,15 @@
 <template>
   <div class="hello">
-    index Page
+    {{msg}}
     
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'main',
   props: {
-    msg: String
+    msg:Array
   }
 }
 </script>

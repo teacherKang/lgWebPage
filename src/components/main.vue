@@ -1,13 +1,13 @@
 <template>
   <div class="hello">
-    {{msg}}
+    main
     
   </div>
 </template>
 
 <script>
 export default {
-  name: 'main',
+  name: 'Main',
   props: {
     msg:Array
   }

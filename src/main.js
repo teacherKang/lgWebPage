@@ -5,10 +5,10 @@ import "ant-design-vue/dist/antd.css";
 // import antd from '../node_modules/ant-design-vue';
 import ant from '../node_modules/ant-design-vue';
 import App from './App.vue'
-// console.log(antd)
+import axios from 'axios'
 Vue.use(ant);
-Vue.config.productionTip = false
-
+Vue.config.productionTip = false;
+Vue.prototype.axios = axios;
 new Vue({
   router,
   render: h => h(App),

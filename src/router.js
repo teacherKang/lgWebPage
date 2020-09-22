@@ -3,6 +3,7 @@ import Router from "vue-router";
 import Login from "../src/components/login/Login.vue"
 import Register from "../src/components/login/Register.vue"
 import Main from "../src/components/main.vue"
+import ChildTset from "../src/components/ChildTset.vue"
 Vue.use(Router);
 const router = new Router({
   mode: "history",
@@ -23,7 +24,11 @@ const router = new Router({
       name: "main",
       component: Main,
       children: [
-        
+        {
+          path: "/ChildTset",
+          name: "ChildTset",
+          component:ChildTset,
+        }
         
       ]
     },

@@ -1,12 +1,15 @@
 module.exports = {
-  css: {
-    loaderOptions: {
-      scss: {
-        modifyVars: {
-          "primary-color":"#1a5a5a",
-        },
-        javascriptEnabled:true,
+  devServer: {
+    open: false,
+    port: 9999,
+    proxy: {
+      '/api': {
+        target:process.env.URL,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': '' 
+        }
       }
     }
-  }
+  },
 }

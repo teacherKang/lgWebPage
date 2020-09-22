@@ -1,53 +1,11 @@
 <template>
-  <div class="hello">
-    <a-layout id="components-layout-demo-side" style="min-height: 100vh">
-      <a-layout-sider collapsible v-model="collapsed">
-        <div class="logo" ><input type="text"></div>
-        <a-menu theme="dark" :defaultSelectedKeys="['1']" mode="inline">
-          <a-menu-item key="1">
-            <a-icon type="pie-chart" />
-            <span>Option 1</span>
-          </a-menu-item>
-          <a-menu-item key="2">
-            <a-icon type="desktop" />
-            <span>Option 2</span>
-          </a-menu-item>
-          <a-sub-menu key="sub1">
-            <span slot="title"><a-icon type="user" /><span>User</span></span>
-            <a-menu-item key="3">Tom</a-menu-item>
-            <a-menu-item key="4">Bill</a-menu-item>
-            <a-menu-item key="5">Alex</a-menu-item>
-          </a-sub-menu>
-          <a-sub-menu key="sub2">
-            <span slot="title"><a-icon type="team" /><span>Team</span></span>
-            <a-menu-item key="6">Team 1</a-menu-item>
-            <a-menu-item key="8">Team 2</a-menu-item>
-          </a-sub-menu>
-          <a-menu-item key="9">
-            <a-icon type="file" />
-            <span>File</span>
-          </a-menu-item>
-        </a-menu>
-      </a-layout-sider>
-      <a-layout>
-        <a-layout-header style="background: #fff; padding: 0" >
-          lalla
-        </a-layout-header>
-        <a-layout-content style="margin: 0 16px">
-          <a-breadcrumb style="margin: 16px 0">
-            <a-breadcrumb-item>User</a-breadcrumb-item>
-            <a-breadcrumb-item>Bill</a-breadcrumb-item>
-          </a-breadcrumb>
-          <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-            Bill is a cat.
-          </div>
-        </a-layout-content>
-        <a-layout-footer style="text-align: center">
-          Ant Design ©2018 Created by Ant UED
-        </a-layout-footer>
-      </a-layout>
-    </a-layout>
-    
+  <div id="main">
+    <!-- <router-view /> -->
+    <div class="left">left</div>
+    <div class="top">top</div>
+    <div class="main">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -56,13 +14,70 @@ export default {
   data () {
     return{
       collapsed: false,
+      menuList:[
+        {
+          name: "测试",
+          list:[
+            {
+              path: "/ChildTset",
+              name:"测试1",
+              list:[]
+            }
+          ],
+          
+        }
+      ]
+    }
+  },
+  created () {
+    // this.add()
+  },
+  methods:{
+    add () {
+      this.axios.get('/api/getData').then(res=>{
+        console.log(res);
+      })
+    },
+    pushRouter (url) {
+      if(this.$route.path===url) return;
+      this.$router.push({path:url})
     }
   }
 }
-</script>
+</script> 
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+#main{
+  position: relative;
+  .top{
+    position: absolute;
+    width: calc(100% - 320px);
+    left: 320px;
+    text-align: center;
+    height: 300;
+    padding-top: 100px;
+    box-sizing: border-box;
+
+  }
+  .left{
+    position: fixed;
+    width: 320px;
+    height: 100vh;
+    background: #222;
+    box-shadow: inset 0 2px 6px #000;
+    top: 0;
+    left: 0;
+  }
+  .main{
+    position: absolute;
+    width: calc(100% - 320px);
+    height: auto;
+    left: 320px;
+    top: 300px;
+  }
+
+}
 h3 {
   margin: 40px 0 0;
 }
@@ -77,17 +92,6 @@ li {
 a {
   color: #42b983;
 }
-#components-layout-demo-side .logo {
-  height: 32px;
-  background: rgba(255, 255, 255, 0.2);
-  margin: 16px;
-}
-#components-layout-demo-side .logo input{
-  background:transparent;
-  width:100%;
-  border:none;
-  height:100%;
-  outline:none;
-  color:#fff;
-}
+
+
 </style>

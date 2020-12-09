@@ -66,10 +66,11 @@ export default {
   .top{
     position: absolute;
     width: 100%;
+    min-width: 850px;
     left: 0;
     text-align: center;
-    height: 300;
-    padding-top: 100px;
+    // height: 300px;
+    padding-top: 30px;
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
     z-index: 98;
@@ -85,15 +86,16 @@ export default {
     // box-shadow: inset 0 2px 6px OrangeRed;
     top: 0;
     left: -320px;
-    z-index: 97;
+    z-index: 999;
   }
   .main{
     position: absolute;
     width: 100%;
-    height: auto;
+    min-width: 850px;
+    // min-height: calc(100% - 165px);
     transition: all 0.3s ease-in-out;
     left: 0;
-    top: 300px;
+    top: 165px;
     z-index: 99;
     background: #fff;
   }
